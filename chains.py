@@ -30,3 +30,15 @@ prompt_reciepe = PromptTemplate(
 )
 
 reciepe_chain = LLMChain(lmm = client, prompt = prompt_reciepe, output_key = "reciepe")
+
+time_template = """given the reciepe {reciepe}, estimate how much time do i need to cook it
+YOUR REPONSE
+"""
+
+prompt_time = PromptTemplate(
+    llm = client,
+    input_variables = ['reciepe'],
+    template = time_template
+)
+
+time_chain = LLMChain(llm = client, prompt= prompt_time, ouput_key = "time")
