@@ -17,3 +17,16 @@ prompt = PromptTemplate(
 )
 
 location_chain = LLMChain(llm = client, prompt = prompt, output_key = "meal")
+
+
+template_ = """for given {meal}, give me a step by step reciepe, including all necessary details and quantity required
+YOUR REPONSE:
+"""
+
+prompt_reciepe = PromptTemplate(
+    llm = client,
+    input_variables = ["meal"],
+    template = template_
+)
+
+reciepe_chain = LLMChain(lmm = client, prompt = prompt_reciepe, output_key = "reciepe")
